@@ -2,7 +2,7 @@
 
 1. sudo apt-get install avrdude
 1. git clone https://github.com/jpokornyiii/RomiBuild.git
-1. avrdude -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -Uflash:w:RomiBuild/wpilib-ws-romi.ino.arduino_leonardo.hex
+1. avrdude -v -patmega32u4 -cavr109 -P/dev/ttyACM0 -b57600 -D -Uflash:w:RomiBuild/wpilib-ws-romi.ino.arduino_leonardo.hex:i
 
 <pre>
 But getting error:
