@@ -8,3 +8,5 @@
 But getting error:
 Connecting to programmer: .avrdude: butterfly_recv(): programmer is not responding
 </pre>
+
+Note: **avrdude -cavr109 -pATMega32U4 -P/dev/ttyACM0** will provide the same error but easier.
