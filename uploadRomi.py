@@ -11,24 +11,27 @@ import getopt
 def main(argv):
 	
 	try:
-		opts, args = getopt.getopt(argv,"hp:",["port="]);
+		opts, args = getopt.getopt(argv,"hp:f:",["port=","file="]);
 	except getopt.GetoptError as err:
 		print(err);
-		print("Example: uploadRomi.py -p /dev/ttyACM0");
+		print("Example: uploadRomi.py -p /dev/ttyACM0 -f firmware/.pio/build/a-start32U4/firmware.hex");
 		sys.exit(1)
 
-	# Default port to ACM0
+	# Set Defaults
 	usbport = '/dev/ttyACM0';
+	hexfile = '$NVM_BIN/../lib/node_modules/wpilib-ws-robot-romi/firmware/.pio/build/a-star32U4/firmware.hex';
+
 	for opt, arg in opts:
 		if opt == "-h":
-			print("uploadRomi.py -p <full_port_path>");
+			print("uploadRomi.py -p <full_port_path> -f <file_path>");
 			sys.exit();
 		if opt in ("-p", "--port"):
 			usbport = arg;
+		if opt in ("-f", "--file"):
+			hexfile = arg;
 
 	print("Beginning binary upload to Romi ...");
     
-	hexfile = '/home/pi/RomiBuild/wpilib-ws-romi.ino.arduino_leonardo.hex';
 	# baudrate of 1200 resets the Arduino to boot mode for 8 seconds
 	brate = 1200;
 	print("Resetting Romi to boot mode (should see quickly flashing yellow LED");
@@ -52,3 +55,4 @@ def main(argv):
 
 if __name__ == "__main__":
 	main(sys.argv[1:])
+
